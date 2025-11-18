@@ -11,7 +11,16 @@
 		"ghcr.io/devcontainers-extra/features/poetry:2": {},
 		"ghcr.io/devcontainers/features/node:1": {},
 	},
-	"postCreateCommand": ".devcontainer/setup.sh",
+	"postCreateCommand": "bash .devcontainer/setup.sh && bash .devcontainer/post-create-setup.sh",
+	"forwardPorts": [3000, 3001, 8000],
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"git.autofetch": true,
+				"git.autorefresh": true
+			}
+		}
+	},
 	"runArgs": ["--add-host=host.docker.internal:host-gateway"],
 	"containerEnv": {
 		"DOCKER_HOST_ADDR": "host.docker.internal"
